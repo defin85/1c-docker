@@ -6,7 +6,7 @@ services:
         restart: always
         environment:
             POSTGRES_USER: usr1cv8 # Логин для подключения к БД
-            POSTGRES_PASSWORD: p-123456 # ОБЯЗАТЕЛЬНО смените пароль
+            POSTGRES_PASSWORD: p-usr1cv8 # ОБЯЗАТЕЛЬНО смените пароль
             POSTGRES_DB: postgres # Имя БД по умолчанию
         ports:
             - "5432:5432" # Пробрасываем порт для доступа к БД снаружи (например, через pgAdmin)
