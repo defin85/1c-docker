@@ -1,0 +1,36 @@
+services:
+    # Сервис с базой данных PostgreSQL
+    postgres-db:
+        image: postgres:14-alpine # Используем официальный образ PostgreSQL
+        container_name: 1c_postgres_db
+        restart: always
+        environment:
+            POSTGRES_USER: usr1cv8 # Логин для подключения к БД
+            POSTGRES_PASSWORD: p-123456 # ОБЯЗАТЕЛЬНО смените пароль
+            POSTGRES_DB: postgres # Имя БД по умолчанию
+        ports:
+            - "5432:5432" # Пробрасываем порт для доступа к БД снаружи (например, через pgAdmin)
+        volumes:
+            - pg_data:/var/lib/postgresql/data # Сохраняем данные БД между перезапусками контейнера
+
+    # Сервис с сервером 1С
+    1c-server:
+        # build:
+        #     context: ./1c-server # Указываем, где находится Dockerfile
+        image: defin85/1c-server:latest
+        container_name: 1c_server
+        restart: always
+        ports:
+            - "1540:1540" # Порт для агента кластера
+            - "1541:1541" # Порт для менеджера кластера
+            - "1542:1542" # Порт для RAS
+            - "1560-1591:1560-1591" # Диапазон портов для рабочих процессов
+        depends_on:
+            - postgres-db # Запускать только после старта базы данных
+        volumes:
+            - 1c_data:/home/usr1cv8/.1cv8/ # Сохраняем настройки кластера 1С        
+
+# Определяем именованные volumes для надежного хранения данных
+volumes:
+    pg_data:
+    1c_data:
