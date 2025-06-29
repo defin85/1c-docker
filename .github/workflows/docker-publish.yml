@@ -20,13 +20,13 @@ jobs:
       - name: Download .deb packages from release
         run: |
           mkdir -p 1c-server/distr
-          wget -P 1c-server/distr/ https://github.com/defin85/1c-docker/releases/downloads/v8.3.25.1394/1c-enterprise-8.3.25.1394-common_8.3.25-1394_amd64.deb
-          wget -P 1c-server/distr/ https://github.com/defin85/1c-docker/releases/downloads/v8.3.25.1394/1c-enterprise-8.3.25.1394-common-nls_8.3.25-1394_amd64.deb
-          wget -P 1c-server/distr/ https://github.com/defin85/1c-docker/releases/downloads/v8.3.25.1394/1c-enterprise-8.3.25.1394-crs_8.3.25-1394_amd64.deb
-          wget -P 1c-server/distr/ https://github.com/defin85/1c-docker/releases/downloads/v8.3.25.1394/1c-enterprise-8.3.25.1394-server_8.3.25-1394_amd64.deb
-          wget -P 1c-server/distr/ https://github.com/defin85/1c-docker/releases/downloads/v8.3.25.1394/1c-enterprise-8.3.25.1394-server-nls_8.3.25-1394_amd64.deb
-          wget -P 1c-server/distr/ https://github.com/defin85/1c-docker/releases/downloads/v8.3.25.1394/1c-enterprise-8.3.25.1394-ws_8.3.25-1394_amd64.deb
-          wget -P 1c-server/distr/ https://github.com/defin85/1c-docker/releases/downloads/v8.3.25.1394/1c-enterprise-8.3.25.1394-ws-nls_8.3.25-1394_amd64.deb
+          wget --header="Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" -P 1c-server/distr/ https://github.com/defin85/1c-docker/releases/download/v8.3.25.1394/1c-enterprise-8.3.25.1394-common_8.3.25-1394_amd64.deb
+          wget --header="Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" -P 1c-server/distr/ https://github.com/defin85/1c-docker/releases/download/v8.3.25.1394/1c-enterprise-8.3.25.1394-common-nls_8.3.25-1394_amd64.deb
+          wget --header="Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" -P 1c-server/distr/ https://github.com/defin85/1c-docker/releases/download/v8.3.25.1394/1c-enterprise-8.3.25.1394-crs_8.3.25-1394_amd64.deb
+          wget --header="Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" -P 1c-server/distr/ https://github.com/defin85/1c-docker/releases/download/v8.3.25.1394/1c-enterprise-8.3.25.1394-server_8.3.25-1394_amd64.deb
+          wget --header="Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" -P 1c-server/distr/ https://github.com/defin85/1c-docker/releases/download/v8.3.25.1394/1c-enterprise-8.3.25.1394-server-nls_8.3.25-1394_amd64.deb
+          wget --header="Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" -P 1c-server/distr/ https://github.com/defin85/1c-docker/releases/download/v8.3.25.1394/1c-enterprise-8.3.25.1394-ws_8.3.25-1394_amd64.deb
+          wget --header="Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" -P 1c-server/distr/ https://github.com/defin85/1c-docker/releases/download/v8.3.25.1394/1c-enterprise-8.3.25.1394-ws-nls_8.3.25-1394_amd64.deb          
 
       # 3. Входим в Docker Hub
       - name: Login to Docker Hub
