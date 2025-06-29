@@ -14,7 +14,7 @@ RUN apt-get update && \
     unixodbc \
     ttf-mscorefonts-installer \
     locales \
-    net-tools \
+    netcat-openbsd \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Настраиваем локаль
