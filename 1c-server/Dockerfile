@@ -14,13 +14,14 @@ RUN apt-get update && \
     unixodbc \
     ttf-mscorefonts-installer \
     locales \
+    net-tools \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Настраиваем локаль
 RUN locale-gen ru_RU.UTF-8
-ENV LANG ru_RU.UTF-8
-ENV LANGUAGE ru_RU:ru
-ENV LC_ALL ru_RU.UTF-8
+ENV LANG=ru_RU.UTF-8
+ENV LANGUAGE=ru_RU:ru
+ENV LC_ALL=ru_RU.UTF-8
 
 # Копируем дистрибутивы
 COPY ./distr/*.deb /tmp/1c-distr/

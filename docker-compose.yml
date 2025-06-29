@@ -17,9 +17,13 @@ services:
     1c-server:
         # build:
         #     context: ./1c-server # Указываем, где находится Dockerfile
-        image: defin85/1c-server:latest
+        # image: defin85/1c-server:latest # Отказались от latest в пользу явных версий
+        image: defin85/1c-server:8.3.25.1394 # <-- Укажите здесь нужную версию
         container_name: 1c_server
         restart: always
+        environment:
+            C1_ADMIN_USER: admin # Логин администратора кластера 1С
+            C1_ADMIN_PWD: PasswOrd # Пароль администратора кластера 1С. ОБЯЗАТЕЛЬНО СМЕНИТЕ!
         ports:
             - "1540:1540" # Порт для агента кластера
             - "1541:1541" # Порт для менеджера кластера
